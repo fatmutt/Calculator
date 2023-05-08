@@ -1,0 +1,87 @@
+body {
+    font-family: 'Roboto', Helvetica, sans-serif;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+    background-color: rgb(99, 98, 98);
+    height: 400px;
+    width: 320px;
+    border-radius: 25px;
+}
+#top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.digit {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin: 1px;
+    background-color: rgb(207,207,207);
+}
+
+.oper {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin: 1px;
+    background-color: rgb(207,207,207);
+}
+
+#display {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    width: 260px;
+    height: 60px;
+    font-size: 1.5em;
+    background-color: rgb(215, 224, 202);
+    margin-bottom: 10px;
+}
+#previous-operand{
+    display: flex;
+    justify-content: end;
+    width: 260px;
+    height: 30px;
+    
+}
+#current-operand {
+    display: flex;
+    width: 260px;
+    height: 30px;
+}
+#removal {
+    display: flex;
+    justify-content: center;
+}
+
+.remove {
+    height: 30px;
+    width: 80px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    background-color: rgb(175, 175, 175);
+}
+.period {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin: 1px;
+    background-color: rgb(207, 207, 207);
+}
