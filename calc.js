@@ -1,105 +1,142 @@
-class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
-        this.previousOperandTextElement = previousOperandTextElement
-        this.currentOperandTextElement = currentOperandTextElement
-        this.clear()
-    }
-}
+let previousOperandTextElement ='';
 
-const previousOperandTextElement = document.querySelector('[data-previous-operand]');
-const currentOperandTextElement = document.querySelector('[data-current-operand]')
+let currentOperandTextElement = '';
+let operation = '';
 
-const plus = document.getElementById('+');
+let answer = '';
 
-const minus = document.getElementById('-');
+const operative = document.querySelectorAll('oper');
 
-const times = document.getElementById('x');
+const previous = document.getElementById('previous');
 
-const division = document.getElementById('÷');
+const current = document.getElementById('current');
 
-let digits = Array.from(document.getElementsByClassName('digit'));
 
-let operators = Array.from(document.getElementsByClassName('oper'));
+
+const buttons = Array.from(document.querySelectorAll('button'));
+
+buttons.map(button => {
+    button.addEventListener('click', (e) => {
+        if (current.innerText.length > 18) {
+            current.innerText = current.innerText.slice(0,-1);
+        }
+        switch(e.target.innerText) {
+            case('AC'):
+                current.innerText = '';
+                previous.innerText = '';
+                answer = '';
+                currentOperandTextElement = '';
+                previousOperandTextElement = '';
+                break;
+            case('D'):
+                current.innerText = current.innerText.slice(0,-1);
+                break;
+            case('+'):
+                previousOperandTextElement = current.innerText;
+                previous.innerText = previousOperandTextElement;
+                operation = e.target.innerText;
+                current.innerText = '';
+                if (previousOperandTextElement && currentOperandTextElement !== '')
+                break;
+            case('-'):
+                previousOperandTextElement = current.innerText;
+                previous.innerText = previousOperandTextElement;
+                operation = e.target.innerText;
+                current.innerText = '';
+                
+                break;
+            case('x'):
+                previousOperandTextElement = current.innerText;
+                previous.innerText = previousOperandTextElement;
+                operation = e.target.innerText;
+                current.innerText = '';
+                
+                break;
+            case('÷'):
+                previousOperandTextElement = current.innerText;
+                previous.innerText = previousOperandTextElement;
+                operation = e.target.innerText;
+                current.innerText = '';
+                break;
+            case('.'):
+                if (current.innerText.includes('.')){
+                    break;
+                } current.innerText += '.';
+            case ('='):
+                
+                break;
+
+            default:
+                current.innerText += e.target.innerText;
+        }
+    })
+})
+
 
 let c = document.getElementById('clear');
 
 let d = document.getElementById('delete');
 
-let equals = document.getElementById('=');
+const equalsButton = document.getElementById('equals');
 
 let period = document.getElementById('.');
 
-let displayInput = document.getElementById('currentOperand');
-
 function add(a, b) {
-    const sum = a + b;
-    return sum;
+    
+    const sum = parseFloat(a) + parseFloat(b);
+    answer = sum;
+
 };
 
 function subtract(a, b) {
-    const sum = a - b;
-    return sum;
+    let sum = parseFloat(a) - parseFloat(b);
+    answer = sum;
 };
 
 function multiply(a,b) {
-   return a*b;
+   let sum = parseFloat(a) * parseFloat(b);
+   answer = sum;
 };
 
 function divide(a,b) {
-    return a/b;
+    let sum = parseFloat(a) / parseFloat(b);
+    answer = sum;
 };
 
-
-
-function operate(a, operator, b) {
-a = Number(a);
-b = Number(b);
-    switch(operator) {
-        case '+':
-            return add(a,b)
-        case '-':
-            return subtract(a,b)
-        case 'x':
-            return multiply(a,b)
-        case '÷':
-            if (b === 0) return null
-            else return divide(a,b)
-        default:
-            return null
+function equal (a,b) {
+    if (operation === '+') {
+        add(a,b);
+        previous.innerText = '';
+        current.innerText = answer;
+    } else if (operation === '-') {
+        subtract(a,b);
+        current.innerText = answer;
+    } else if (operation === 'x') {
+        multiply(a,b);
+        current.innerText = answer;
+    } else if (operation === '÷') {
+        divide(a,b);
+        current.innerText = answer;
     };
+    
 };
 
-equals.addEventListener('click', () => {
-
+equalsButton.addEventListener('click', () => {
+    previousOperandTextElement = previous.innerText;
+    currentOperandTextElement = current.innerText;
+    equal(previousOperandTextElement, currentOperandTextElement);
+    previous.innerText = '';
 })
 
+function finale() {
+    previousOperandTextElement = previous.innerText;
+    currentOperandTextElement = current.innerText;
+    equal(previousOperandTextElement, currentOperandTextElement);
+    previous.innerText = '';
+}
 
-
-digits.map( digit => {
-    digit.addEventListener('click', (e) => {
-        displayInput.innerText += e.target.innerText;
-    });
-});
-
-operators.map( oper => {
-    oper.addEventListener('click', () => {
-        if (oper)
-        
-        
-    });
-});
-
-c.addEventListener('click', () => {
-    this.currentOperand;
-    this.previousOperand;
-    this.operation = undefined
-
-});
-
-d.addEventListener('click', () => {
-    displayInput.innerText = displayInput.innerText.slice(0, -1);
-});
-
-equals.addEventListener('click', () => {
-calculate();
-});
+/* digits.map(digit => digits.addEventListener('click', (e) => {
+    if (current.innerText.length > 19){
+        return;
+    } e.target.innerText;
+})); */

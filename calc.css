@@ -40,6 +40,14 @@ body {
     background-color: rgb(207,207,207);
 }
 
+#equals {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin: 1px;
+    background-color: rgb(207,207,207);
+}
+
 #display {
     display: flex;
     flex-direction: column;
@@ -51,18 +59,7 @@ body {
     background-color: rgb(215, 224, 202);
     margin-bottom: 10px;
 }
-#previous-operand{
-    display: flex;
-    justify-content: end;
-    width: 260px;
-    height: 30px;
-    
-}
-#current-operand {
-    display: flex;
-    width: 260px;
-    height: 30px;
-}
+
 #removal {
     display: flex;
     justify-content: center;
@@ -84,4 +81,18 @@ body {
     border-radius: 12px;
     margin: 1px;
     background-color: rgb(207, 207, 207);
+}
+
+#current {
+    display: flex;
+    width: 260px;
+    height: 130px;
+
+}
+
+#previous {
+    display: flex;
+    width: 260px;
+    height: 130px;
+
 }
